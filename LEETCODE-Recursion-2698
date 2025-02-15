@@ -1,0 +1,23 @@
+class Solution {
+    public Boolean check(int num , int cs , int t)
+    {
+        if(num==0) return cs==t;
+        return check(num/10, cs+num%10, t)||
+         check(num/100, cs+num%100, t)||
+         check(num/1000, cs+num%1000, t)||
+         check(num/10000, cs+num%10000, t);
+    }
+    public int punishmentNumber(int n) {
+        int pm=0;
+        for(int i=1;i<=n;i++)
+        {
+            int sq=i*i;
+            if(check(sq,0,i))
+            {
+                pm+=sq;
+            }
+
+        }
+        return pm;
+    }
+}
